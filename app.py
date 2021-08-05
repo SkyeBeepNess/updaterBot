@@ -24,6 +24,7 @@ def restart(update, context):
 		
 		#context.bot.send_message(update.effective_message.chat_id, x.stdout.decode(), parse_mode='HTML')
 	else:
+		print('wf')
 		#context.bot.send_message(update.effective_message.chat_id, "YOU SHALL NOT PASS", parse_mode='HTML')
 
 

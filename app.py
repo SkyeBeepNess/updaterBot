@@ -12,7 +12,7 @@ def pull(update, context):
 		PATH_OF_GIT_REPO = f'/home/beepuser/Documents/bots/{rep}'
 		x = subprocess.run(['git', 'pull'], cwd=PATH_OF_GIT_REPO)
 		
-		context.bot.send_message(update.effective_message.chat_id, x.args, parse_mode='HTML')
+		context.bot.send_message(update.effective_message.chat_id, x.returncode, parse_mode='HTML')
 
 
 

@@ -22,9 +22,9 @@ def restart(update, context):
 		PATH_OF_GIT_REPO = f'/home/beepuser/Documents/bots/{rep}'
 		x = subprocess.run(['pkill', '-9', '-f'], cwd=PATH_OF_GIT_REPO, capture_output=True)
 		
-		context.bot.send_message(update.effective_message.chat_id, x.stdout.decode(), parse_mode='HTML')
+		#context.bot.send_message(update.effective_message.chat_id, x.stdout.decode(), parse_mode='HTML')
 	else:
-		context.bot.send_message(update.effective_message.chat_id, "YOU SHALL NOT PASS", parse_mode='HTML')
+		#context.bot.send_message(update.effective_message.chat_id, "YOU SHALL NOT PASS", parse_mode='HTML')
 
 
 

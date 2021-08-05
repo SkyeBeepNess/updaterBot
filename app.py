@@ -8,7 +8,10 @@ logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s
 
 def pull(update, context):
 	if update.effective_message.chat_id == 208339045:
-		x = subprocess.run(['ls', '-la'])
+		rep = update.effective_message.text.split(' ')[1]
+		PATH_OF_GIT_REPO = f'/home/beepuser/Documents/bots/{rep}'
+		x = subprocess.run(['ls', '-la'], cwd=PATH_OF_GIT_REPO)
+		
 		print(x)
 		print(x.args)
 		print(x.returncode)

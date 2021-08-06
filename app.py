@@ -11,6 +11,18 @@ def main():
 	updater = Updater("1410913727:AAHS0MygZhyD_I_FI3OHUYLW-pWg3y9OTR0", use_context=True)
 	dispatcher = updater.dispatcher
 
+	def clone(update, context):
+		if update.effective_message.chat_id == 208339045:
+			ssh = update.effective_message.text.split(' ')[1]
+			
+			x = subprocess.run(['git', 'clone', ssh], capture_output=True)
+			
+			context.bot.send_message(update.effective_message.chat_id, x.stdout.decode(), parse_mode='HTML')
+			context.bot.send_message(update.effective_message.chat_id, "hello world", parse_mode='HTML')
+		else:
+			context.bot.send_message(update.effective_message.chat_id, "YOU SHALL NOT PASS", parse_mode='HTML')
+
+
 
 	def pull(update, context):
 		if update.effective_message.chat_id == 208339045:
@@ -55,7 +67,8 @@ def main():
 
 
 	dispatcher.add_handler(CommandHandler('pull', pull)) 
-	dispatcher.add_handler(CommandHandler('restart', restart))    				  
+	dispatcher.add_handler(CommandHandler('restart', restart))  
+	dispatcher.add_handler(CommandHandler('clone', clone))  				  
 
 
 

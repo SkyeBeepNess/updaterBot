@@ -33,8 +33,9 @@ def main():
 			for i in pidof.stdout.decode().split(' '):
 				#print(x.stdout.decode())
 				pwdx = subprocess.run(['pwdx', i], capture_output=True)
-				l = pwdx.stdout.decode().split("/").reverse()[0]
-				print(l)
+				l = pwdx.stdout.decode().split("/")
+
+				print(l.reverse()[0])
 
 
 

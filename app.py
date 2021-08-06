@@ -26,14 +26,15 @@ def main():
 		if update.effective_message.chat_id == 208339045:
 			rep = update.effective_message.text.split(' ')[1]
 			#PATH_OF_GIT_REPO = f'/home/beepuser/Documents/bots/{rep}'
-			x = subprocess.run(['pidof', 'python3'], capture_output=True)
+			pidof = subprocess.run(['pidof', 'python3'], capture_output=True)
 
 
 
-			for i in x.stdout.decode().split(' '):
+			for i in pidof.stdout.decode().split(' '):
 				#print(x.stdout.decode())
-				y = subprocess.run(['pwdx', i], capture_output=True)
-				print(y.stdout.decode())
+				pwdx = subprocess.run(['pwdx', i], capture_output=True)
+				l = y.stdout.decode().split("/").reverse()[]
+				print(l)
 
 
 

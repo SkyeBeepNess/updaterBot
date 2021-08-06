@@ -17,7 +17,7 @@ def main():
 			
 			x = subprocess.run(['git', 'clone', ssh], capture_output=True)
 			
-			context.bot.send_message(update.effective_message.chat_id, x.stdout.decode(), parse_mode='HTML')
+			#context.bot.send_message(update.effective_message.chat_id, x.stdout.decode(), parse_mode='HTML')
 			context.bot.send_message(update.effective_message.chat_id, "hello world", parse_mode='HTML')
 		else:
 			context.bot.send_message(update.effective_message.chat_id, "YOU SHALL NOT PASS", parse_mode='HTML')

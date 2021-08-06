@@ -28,7 +28,7 @@ def main():
 			PATH_OF_GIT_REPO = f'/home/beepuser/Documents/bots/{rep}'
 			#x = subprocess.run(['pkill', '-9', '-f', 'app.py'], cwd=PATH_OF_GIT_REPO, capture_output=True)
 			updater.stop()
-	        os.execl(sys.executable, sys.executable, *sys.argv)
+			os.execl(sys.executable, sys.executable, *sys.argv)
 			context.bot.send_message(update.effective_message.chat_id, x.stdout.decode(), parse_mode='HTML')
 		else:
 			print('wf')

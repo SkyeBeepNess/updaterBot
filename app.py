@@ -109,9 +109,13 @@ def main():
 			if rep in lz:
 				context.bot.send_message(update.effective_message.chat_id, "This bot is already runnin!", parse_mode='HTML')
 			else: 
-				context.bot.send_message(update.effective_message.chat_id, "this bot isn't running anyway", parse_mode='HTML')
+				try:
+					subprocess.Popen(['python3', 'app.py'], cwd=PATH_OF_GIT_REPO)
+				except:
+					context.bot.send_message(update.effective_message.chat_id, "something went HORRIBLY wrong....", parse_mode='HTML')
 
-			context.bot.send_message(update.effective_message.chat_id, pidof.stdout.decode(), parse_mode='HTML')
+
+
 		else:
 			print('wf')
 			#context.bot.send_message(update.effective_message.chat_id, "YOU SHALL NOT PASS", parse_mode='HTML')

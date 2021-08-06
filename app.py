@@ -111,6 +111,8 @@ def main():
 			else: 
 				try:
 					subprocess.Popen(['python3', 'app.py'], cwd=PATH_OF_GIT_REPO)
+					context.bot.send_message(update.effective_message.chat_id, "the bot is up and runing! (it seems so anyway)", parse_mode='HTML')
+
 				except:
 					context.bot.send_message(update.effective_message.chat_id, "something went HORRIBLY wrong....", parse_mode='HTML')
 

@@ -35,7 +35,7 @@ def main():
 				pwdx = subprocess.run(['pwdx', i], capture_output=True)
 				l = pwdx.stdout.decode().split("/")
 				l.reverse()
-				lz = l[0].strip
+				lz = l[0].strip()
 				print(lz)
 				print(len(lz))
 

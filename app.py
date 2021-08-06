@@ -95,6 +95,7 @@ def main():
 
 	def start(update, context):
 		if update.effective_message.chat_id == 208339045:
+			lz=[]
 			rep = update.effective_message.text.split(' ')[1]
 			PATH_OF_GIT_REPO = f'/home/beepuser/Documents/bots/{rep}'
 			pidof = subprocess.run(['pidof', 'python3'], capture_output=True)
@@ -107,7 +108,6 @@ def main():
 			print(lz)
 			if rep in lz:
 				context.bot.send_message(update.effective_message.chat_id, "This bot is already runnin!", parse_mode='HTML')
-
 			else: 
 				context.bot.send_message(update.effective_message.chat_id, "this bot isn't running anyway", parse_mode='HTML')
 

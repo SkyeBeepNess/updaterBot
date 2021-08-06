@@ -1,6 +1,7 @@
 import subprocess
 import telegram
 import logging
+import time
 from telegram.ext import Updater, CommandHandler, MessageHandler, ConversationHandler, Filters, PicklePersistence
 #skye_BeepNess
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO)
@@ -37,7 +38,10 @@ def main():
 				if lz == rep:
 					killed = subprocess.run(['kill', '-2', i], capture_output=True)
 					restarted = subprocess.run(['python3', 'app.py', i], cwd=PATH_OF_GIT_REPO, capture_output=True)
+					context.bot.send_message(update.effective_message.chat_id, "turning the bot off...", parse_mode='HTML')
+					time.sleep(10)
 					context.bot.send_message(update.effective_message.chat_id, restarted.stdout.decode(), parse_mode='HTML')
+					context.bot.send_message(update.effective_message.chat_id, "the bot is up and runing! (it seems so anyway)", parse_mode='HTML')
 					break
 				else: 
 					print('nope')

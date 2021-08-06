@@ -25,7 +25,7 @@ def main():
 	def restart(update, context):
 		if update.effective_message.chat_id == 208339045:
 			rep = update.effective_message.text.split(' ')[1]
-			#PATH_OF_GIT_REPO = f'/home/beepuser/Documents/bots/{rep}'
+			PATH_OF_GIT_REPO = f'/home/beepuser/Documents/bots/{rep}'
 			pidof = subprocess.run(['pidof', 'python3'], capture_output=True)
 			for i in pidof.stdout.decode().split(' '):
 
@@ -36,7 +36,8 @@ def main():
 			
 				if lz == rep:
 					killed = subprocess.run(['kill', '-2', i], capture_output=True)
-					print(killed.stdout.decode())
+					restarted = subprocess.run(['python3', 'app.py', i], cwd=PATH_OF_GIT_REPO, capture_output=True)
+					context.bot.send_message(update.effective_message.chat_id, restarted.stdout.decode(), parse_mode='HTML')
 					break
 				else: 
 					print('nope')

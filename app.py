@@ -63,6 +63,8 @@ def main():
 			print('wf')
 			#context.bot.send_message(update.effective_message.chat_id, "YOU SHALL NOT PASS", parse_mode='HTML')
 
+
+
 	def kill(update, context):
 		if update.effective_message.chat_id == 208339045:
 			rep = update.effective_message.text.split(' ')[1]
@@ -91,12 +93,37 @@ def main():
 
 
 
+	def start(update, context):
+		if update.effective_message.chat_id == 208339045:
+			rep = update.effective_message.text.split(' ')[1]
+			PATH_OF_GIT_REPO = f'/home/beepuser/Documents/bots/{rep}'
+			pidof = subprocess.run(['pidof', 'python3'], capture_output=True)
+
+			for i in pidof.stdout.decode().split(' '):
+				pwdx = subprocess.run(['pwdx', i], capture_output=True)
+				l = pwdx.stdout.decode().split("/")
+				l.reverse()
+				lz.append(l[0].strip())
+			print(lz)
+			if rep in lz:
+				context.bot.send_message(update.effective_message.chat_id, "This bot is already runnin!", parse_mode='HTML')
+				break
+			else: 
+				context.bot.send_message(update.effective_message.chat_id, "this bot isn't running anyway", parse_mode='HTML')
+
+			context.bot.send_message(update.effective_message.chat_id, pidof.stdout.decode(), parse_mode='HTML')
+		else:
+			print('wf')
+			#context.bot.send_message(update.effective_message.chat_id, "YOU SHALL NOT PASS", parse_mode='HTML')
+
+
+
 
 	dispatcher.add_handler(CommandHandler('pull', pull)) 
 	dispatcher.add_handler(CommandHandler('restart', restart))  
 	dispatcher.add_handler(CommandHandler('clone', clone))  	
 	dispatcher.add_handler(CommandHandler('kill', kill))  
-
+	dispatcher.add_handler(CommandHandler('start', start))  
 
 
 

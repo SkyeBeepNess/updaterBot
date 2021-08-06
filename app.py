@@ -107,7 +107,7 @@ def main():
 			print(lz)
 			if rep in lz:
 				context.bot.send_message(update.effective_message.chat_id, "This bot is already runnin!", parse_mode='HTML')
-				break
+
 			else: 
 				context.bot.send_message(update.effective_message.chat_id, "this bot isn't running anyway", parse_mode='HTML')
 

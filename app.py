@@ -27,26 +27,19 @@ def main():
 			rep = update.effective_message.text.split(' ')[1]
 			#PATH_OF_GIT_REPO = f'/home/beepuser/Documents/bots/{rep}'
 			pidof = subprocess.run(['pidof', 'python3'], capture_output=True)
-
-
-
 			for i in pidof.stdout.decode().split(' '):
-				#print(x.stdout.decode())
+
 				pwdx = subprocess.run(['pwdx', i], capture_output=True)
 				l = pwdx.stdout.decode().split("/")
 				l.reverse()
 				lz = l[0].strip()
 			
 				if lz == rep:
-					print(lz)
+					killed = subprocess.run(['kill', '-2', i], capture_output=True)
+					print(killed.stdout.decode())
 					break
 				else: 
 					print('nope')
-
-
-
-
-
 
 			context.bot.send_message(update.effective_message.chat_id, pidof.stdout.decode(), parse_mode='HTML')
 		else:

@@ -15,7 +15,7 @@ def main():
 		if update.effective_message.chat_id == 208339045:
 			ssh = update.effective_message.text.split(' ')[1]
 			
-			x = subprocess.run(['git', 'clone', ssh], capture_output=True)
+			x = subprocess.run(['git', 'clone', ssh], cwd="/home/beepuser/Documents/bots/", capture_output=True)
 			
 			#context.bot.send_message(update.effective_message.chat_id, x.stdout.decode(), parse_mode='HTML')
 			context.bot.send_message(update.effective_message.chat_id, "hello world", parse_mode='HTML')

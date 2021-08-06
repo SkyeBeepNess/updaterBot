@@ -36,7 +36,11 @@ def main():
 				l = pwdx.stdout.decode().split("/")
 				l.reverse()
 				print(l[0])
+				print(len(l[0]))
+
+
 				print(rep)
+				print(len(rep))
 				print(l[0]==rep)
 				#if l[0] == rep:
 				#	print(l[0])

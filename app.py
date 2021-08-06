@@ -18,7 +18,7 @@ def main():
 			x = subprocess.run(['git', 'clone', ssh], cwd="/home/beepuser/Documents/bots/", capture_output=True)
 			
 			#context.bot.send_message(update.effective_message.chat_id, x.stdout.decode(), parse_mode='HTML')
-			context.bot.send_message(update.effective_message.chat_id, "hello world", parse_mode='HTML')
+			context.bot.send_message(update.effective_message.chat_id, "Done!", parse_mode='HTML')
 		else:
 			context.bot.send_message(update.effective_message.chat_id, "YOU SHALL NOT PASS", parse_mode='HTML')
 
@@ -31,7 +31,7 @@ def main():
 			x = subprocess.run(['git', 'pull'], cwd=PATH_OF_GIT_REPO, capture_output=True)
 			
 			context.bot.send_message(update.effective_message.chat_id, x.stdout.decode(), parse_mode='HTML')
-			context.bot.send_message(update.effective_message.chat_id, "hello world", parse_mode='HTML')
+			context.bot.send_message(update.effective_message.chat_id, "Everything is up to date now!", parse_mode='HTML')
 		else:
 			context.bot.send_message(update.effective_message.chat_id, "YOU SHALL NOT PASS", parse_mode='HTML')
 
@@ -57,11 +57,8 @@ def main():
 					break
 				else: 
 					print('nope')
-
-			context.bot.send_message(update.effective_message.chat_id, pidof.stdout.decode(), parse_mode='HTML')
 		else:
-			print('wf')
-			#context.bot.send_message(update.effective_message.chat_id, "YOU SHALL NOT PASS", parse_mode='HTML')
+			context.bot.send_message(update.effective_message.chat_id, "YOU SHALL NOT PASS", parse_mode='HTML')
 
 
 

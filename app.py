@@ -83,7 +83,7 @@ def main():
 				else: 
 					context.bot.send_message(update.effective_message.chat_id, "this bot isn't running anyway", parse_mode='HTML')
 
-			context.bot.send_message(update.effective_message.chat_id, pidof.stdout.decode(), parse_mode='HTML')
+
 		else:
 			print('wf')
 			#context.bot.send_message(update.effective_message.chat_id, "YOU SHALL NOT PASS", parse_mode='HTML')

@@ -35,13 +35,14 @@ def main():
 				pwdx = subprocess.run(['pwdx', i], capture_output=True)
 				l = pwdx.stdout.decode().split("/")
 				l.reverse()
-				print(l[0])
-				print(len(l[0]))
+				lz = l[0].strip
+				print(lz)
+				print(len(lz))
 
 
 				print(rep)
 				print(len(rep))
-				print(l[0]==rep)
+				print(lz==rep)
 				#if l[0] == rep:
 				#	print(l[0])
 				#	break

@@ -38,6 +38,7 @@ def main():
 
 	def restart(update, context):
 		if update.effective_message.chat_id == 208339045:
+			lz={}
 			rep = update.effective_message.text.split(' ')[1]
 			PATH_OF_GIT_REPO = f'/home/beepuser/Documents/bots/{rep}'
 			pidof = subprocess.run(['pidof', 'python3'], capture_output=True)

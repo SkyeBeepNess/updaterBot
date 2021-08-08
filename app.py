@@ -4,12 +4,11 @@ import logging
 import telegram
 import subprocess
 from telegram.ext import Updater, CommandHandler, MessageHandler, ConversationHandler, Filters, PicklePersistence
-#skye_BeepNess
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO)
 
 
 def main():
-	updater = Updater("1410913727:AAHS0MygZhyD_I_FI3OHUYLW-pWg3y9OTR0", use_context=True)
+	updater = Updater("1915679744:AAG6NsToQVCd2fvy2wJWdhsskmRU74Bjby8", use_context=True)
 	dispatcher = updater.dispatcher
 
 	def clone(update, context):

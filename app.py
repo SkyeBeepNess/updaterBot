@@ -66,6 +66,7 @@ def main():
 				context.bot.send_message(update.effective_message.chat_id, "restarting...", parse_mode='HTML')
 				while rep not in lz:
 					lz=[]
+					pidof = subprocess.run(['pidof', 'python3'], capture_output=True)
 					for i in pidof.stdout.decode().split(' '):
 						pwdx = subprocess.run(['pwdx', i], capture_output=True)
 						l = pwdx.stdout.decode().split("/")
@@ -99,6 +100,7 @@ def main():
 				context.bot.send_message(update.effective_message.chat_id, "turning the bot off...", parse_mode='HTML')
 				while rep in lz:
 					lz=[]
+					pidof = subprocess.run(['pidof', 'python3'], capture_output=True)
 					for i in pidof.stdout.decode().split(' '):
 						pwdx = subprocess.run(['pwdx', i], capture_output=True)
 						l = pwdx.stdout.decode().split("/")

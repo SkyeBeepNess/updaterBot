@@ -61,9 +61,9 @@ def main():
 						l = pwdx.stdout.decode().split("/")
 						l.reverse()
 						lz.append(l[0].strip())
-				context.bot.edit_message_text(chat_id=update.effective_chat.id, message_id=msg['message_id'], "the bot is now off!", parse_mode='HTML')
+				context.bot.edit_message_text(chat_id=update.effective_chat.id, message_id=msg['message_id'], text="the bot is now off!", parse_mode='HTML')
 				restarted = subprocess.Popen(['python3', 'app.py'], cwd=PATH_OF_GIT_REPO)
-				context.bot.edit_message_text(chat_id=update.effective_chat.id, message_id=msg['message_id'], "restarting...", parse_mode='HTML')
+				context.bot.edit_message_text(chat_id=update.effective_chat.id, message_id=msg['message_id'], text="restarting...", parse_mode='HTML')
 				while rep not in lz:
 					lz=[]
 					pidof = subprocess.run(['pidof', 'python3'], capture_output=True)
@@ -72,7 +72,7 @@ def main():
 						l = pwdx.stdout.decode().split("/")
 						l.reverse()
 						lz.append(l[0].strip())
-				context.bot.edit_message_text(chat_id=update.effective_chat.id, message_id=msg['message_id'], "the bot is up and runing! (it seems so anyway)", parse_mode='HTML')
+				context.bot.edit_message_text(chat_id=update.effective_chat.id, message_id=msg['message_id'], text="the bot is up and runing! (it seems so anyway)", parse_mode='HTML')
 			else: 
 				context.bot.send_message(update.effective_message.chat_id, "you have to start the bot first!", parse_mode='HTML')
 
@@ -106,7 +106,7 @@ def main():
 						l = pwdx.stdout.decode().split("/")
 						l.reverse()
 						lz.append(l[0].strip())
-				context.bot.edit_message_text(chat_id=update.effective_chat.id, message_id=msg['message_id'], "the bot is now off!", parse_mode='HTML')
+				context.bot.edit_message_text(chat_id=update.effective_chat.id, message_id=msg['message_id'], text="the bot is now off!", parse_mode='HTML')
 			else: 
 				context.bot.send_message(update.effective_message.chat_id, "this bot isn't running anyway", parse_mode='HTML')
 

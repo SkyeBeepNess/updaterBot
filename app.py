@@ -21,7 +21,7 @@ def main():
 			#context.bot.send_message(update.effective_message.chat_id, x.stdout.decode(), parse_mode='HTML')
 			context.bot.send_message(update.effective_message.chat_id, "Done!", parse_mode='HTML')
 		else:
-			context.bot.send_message(update.effective_message.chat_id, "YOU SHALL NOT PASS", parse_mode='HTML')
+			context.bot.send_message(update.effective_message.chat_id, "It seems like you aren't allowed to do that", parse_mode='HTML')
 
 
 
@@ -34,32 +34,49 @@ def main():
 			context.bot.send_message(update.effective_message.chat_id, x.stdout.decode(), parse_mode='HTML')
 			context.bot.send_message(update.effective_message.chat_id, "Everything is up to date now!", parse_mode='HTML')
 		else:
-			context.bot.send_message(update.effective_message.chat_id, "YOU SHALL NOT PASS", parse_mode='HTML')
+			context.bot.send_message(update.effective_message.chat_id, "It seems like you aren't allowed to do that", parse_mode='HTML')
 
 	def restart(update, context):
 		if update.effective_message.chat_id == 208339045:
 			rep = update.effective_message.text.split(' ')[1]
 			PATH_OF_GIT_REPO = f'/home/beepuser/Documents/bots/{rep}'
 			pidof = subprocess.run(['pidof', 'python3'], capture_output=True)
-			for i in pidof.stdout.decode().split(' '):
 
+
+			for i in pidof.stdout.decode().split(' '):
 				pwdx = subprocess.run(['pwdx', i], capture_output=True)
 				l = pwdx.stdout.decode().split("/")
 				l.reverse()
-				lz = l[0].strip()
+				lz[l[0].strip()]=i	
+				
 			
-				if lz == rep:
-					killed = subprocess.run(['kill', '-2', i], capture_output=True)
-					context.bot.send_message(update.effective_message.chat_id, "turning the bot off...", parse_mode='HTML')
-					time.sleep(10)
-					restarted = subprocess.Popen(['python3', 'app.py'], cwd=PATH_OF_GIT_REPO)
-					#context.bot.send_message(update.effective_message.chat_id, restarted.stdout.decode(), parse_mode='HTML')
-					context.bot.send_message(update.effective_message.chat_id, "the bot is up and runing! (it seems so anyway)", parse_mode='HTML')
-					break
-				else: 
-					print('nope')
+			if rep in lz:
+				killed = subprocess.run(['kill', '-2', lz[rep]], capture_output=True)
+				context.bot.send_message(update.effective_message.chat_id, "turning the bot off...", parse_mode='HTML')
+				while rep in lz:
+					lz=[]
+					for i in pidof.stdout.decode().split(' '):
+						pwdx = subprocess.run(['pwdx', i], capture_output=True)
+						l = pwdx.stdout.decode().split("/")
+						l.reverse()
+						lz.append(l[0].strip())
+				context.bot.send_message(update.effective_message.chat_id, "the bot is now off!", parse_mode='HTML')
+				restarted = subprocess.Popen(['python3', 'app.py'], cwd=PATH_OF_GIT_REPO)
+				context.bot.send_message(update.effective_message.chat_id, "restarting...", parse_mode='HTML')
+				while rep not in lz:
+					lz=[]
+					for i in pidof.stdout.decode().split(' '):
+						pwdx = subprocess.run(['pwdx', i], capture_output=True)
+						l = pwdx.stdout.decode().split("/")
+						l.reverse()
+						lz.append(l[0].strip())
+				context.bot.send_message(update.effective_message.chat_id, "the bot is up and runing! (it seems so anyway)", parse_mode='HTML')
+			else: 
+				context.bot.send_message(update.effective_message.chat_id, "this bot isn't running anyway", parse_mode='HTML')
+
+
 		else:
-			context.bot.send_message(update.effective_message.chat_id, "YOU SHALL NOT PASS", parse_mode='HTML')
+			context.bot.send_message(update.effective_message.chat_id, "It seems like you aren't allowed to do that", parse_mode='HTML')
 
 
 
@@ -73,8 +90,7 @@ def main():
 				pwdx = subprocess.run(['pwdx', i], capture_output=True)
 				l = pwdx.stdout.decode().split("/")
 				l.reverse()
-				lz[l[0].strip()]=i
-			print(lz)	
+				lz[l[0].strip()]=i	
 				
 			
 			if rep in lz:
@@ -92,8 +108,7 @@ def main():
 				context.bot.send_message(update.effective_message.chat_id, "this bot isn't running anyway", parse_mode='HTML')
 
 		else:
-			print("It seems like you aren't allowed to do that")
-			#context.bot.send_message(update.effective_message.chat_id, "YOU SHALL NOT PASS", parse_mode='HTML')
+			context.bot.send_message(update.effective_message.chat_id, "It seems like you aren't allowed to do that", parse_mode='HTML')
 
 
 
@@ -103,28 +118,22 @@ def main():
 			rep = update.effective_message.text.split(' ')[1]
 			PATH_OF_GIT_REPO = f'/home/beepuser/Documents/bots/{rep}'
 			pidof = subprocess.run(['pidof', 'python3'], capture_output=True)
-
 			for i in pidof.stdout.decode().split(' '):
 				pwdx = subprocess.run(['pwdx', i], capture_output=True)
 				l = pwdx.stdout.decode().split("/")
 				l.reverse()
 				lz.append(l[0].strip())
-			print(lz)
 			if rep in lz:
-				context.bot.send_message(update.effective_message.chat_id, "This bot is already runnin!", parse_mode='HTML')
+				context.bot.send_message(update.effective_message.chat_id, "This bot is already running!", parse_mode='HTML')
 			else: 
 				try:
 					subprocess.Popen(['python3', 'app.py'], cwd=PATH_OF_GIT_REPO)
 					context.bot.send_message(update.effective_message.chat_id, "the bot is up and runing! (it seems so anyway)", parse_mode='HTML')
-
 				except:
 					context.bot.send_message(update.effective_message.chat_id, "something went HORRIBLY wrong....", parse_mode='HTML')
 
-
-
 		else:
-			print('wf')
-			#context.bot.send_message(update.effective_message.chat_id, "YOU SHALL NOT PASS", parse_mode='HTML')
+			context.bot.send_message(update.effective_message.chat_id, "It seems like you aren't allowed to do that", parse_mode='HTML')
 
 
 

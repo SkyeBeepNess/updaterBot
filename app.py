@@ -8,11 +8,11 @@ logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s
 
 
 def main():
-	updater = Updater("1915679744:AAG6NsToQVCd2fvy2wJWdhsskmRU74Bjby8", use_context=True)
+	updater = Updater(BOT_TOKEN, use_context=True)
 	dispatcher = updater.dispatcher
 
 	def clone(update, context):
-		if update.effective_message.chat_id == 208339045:
+		if update.effective_message.chat_id == ADMIN_CHAT_ID:
 			ssh = update.effective_message.text.split(' ')[1]
 			
 			x = subprocess.run(['git', 'clone', ssh], cwd="/home/beepuser/Documents/bots/", capture_output=True)
@@ -25,7 +25,7 @@ def main():
 
 
 	def pull(update, context):
-		if update.effective_message.chat_id == 208339045:
+		if update.effective_message.chat_id == ADMIN_CHAT_ID:
 			rep = update.effective_message.text.split(' ')[1]
 			PATH_OF_GIT_REPO = f'/home/beepuser/Documents/bots/{rep}'
 			x = subprocess.run(['git', 'pull'], cwd=PATH_OF_GIT_REPO, capture_output=True)
@@ -36,7 +36,7 @@ def main():
 			context.bot.send_message(update.effective_message.chat_id, "It seems like you aren't allowed to do that", parse_mode='HTML')
 
 	def restart(update, context):
-		if update.effective_message.chat_id == 208339045:
+		if update.effective_message.chat_id == ADMIN_CHAT_ID:
 			lz={}
 			rep = update.effective_message.text.split(' ')[1]
 			PATH_OF_GIT_REPO = f'/home/beepuser/Documents/bots/{rep}'
@@ -82,7 +82,7 @@ def main():
 
 
 	def kill(update, context):
-		if update.effective_message.chat_id == 208339045:
+		if update.effective_message.chat_id == ADMIN_CHAT_ID:
 			lz={}
 			rep = update.effective_message.text.split(' ')[1]
 			PATH_OF_GIT_REPO = f'/home/beepuser/Documents/bots/{rep}'
@@ -115,7 +115,7 @@ def main():
 
 
 	def start(update, context):
-		if update.effective_message.chat_id == 208339045:
+		if update.effective_message.chat_id == ADMIN_CHAT_ID:
 			lz=[]
 			rep = update.effective_message.text.split(' ')[1]
 			PATH_OF_GIT_REPO = f'/home/beepuser/Documents/bots/{rep}'
